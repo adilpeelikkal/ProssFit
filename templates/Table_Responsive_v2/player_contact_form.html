@@ -1,0 +1,74 @@
+<form name="htmlform" method="post" action="/players/add/" enctype="multipart/form-data">
+  {% csrf_token %}
+<table width="450px">
+</tr>
+<tr>
+ <td valign="top">
+  <label for="first_name">First Name *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="first_name" maxlength="50" size="30">
+ </td>
+</tr>
+ 
+<tr>
+ <td valign="top">
+  <label for="last_name">Last Name *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="last_name" maxlength="50" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="last_name">Profile Photo *</label>
+ </td>
+ <td valign="top">
+  <input type="file" name="myfile">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="email">Age *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="age" maxlength="80" size="30">
+ </td>
+ 
+</tr>
+<tr>
+ <td valign="top">
+  <label for="email">Email Address *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="email" maxlength="80" size="30">
+ </td>
+ 
+</tr>
+<tr>
+ <td valign="top">
+  <label for="telephone">Telephone Number</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="phone" maxlength="30" size="30">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="comments">Comments *</label>
+ </td>
+ <td valign="top">
+  <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+ </td>
+ <td valign="top">
+  <input class="btn btn-success" type="submit" value="Submit"  />
+  <input class="btn btn-success" type="button" value="Back" onclick="location.href='/players/view/'" />
+ </td>
+</tr>
+
+</table>
+</form>

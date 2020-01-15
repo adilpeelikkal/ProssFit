@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Players</h2>
+<table>
+  <tr>
+    <th>Player</th>
+    <th>Age</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Profile Photo</th>
+    <th></th>
+  </tr>
+{% for player in players %}
+  <tr>
+    <td>{{player.first_name}}" "{{player.last_name}}</td>
+    <td>{{player.age}}</td>
+    <td>{{player.email}}</td>
+    <td>{{player.phone}}</td>
+    <td><img src="/media/profile_pics/{{player.profile_photo}}"  height="42" width="42" ></td>
+    <td><a class="btn btn-success"  href="/players/details/{{player.id}}">Update</a>
+    <a class="btn btn-success"  href="/players/details/delete/{{player.id}}">Delete</a></td>
+  </tr>
+{% endfor %}
+</table>
+<div>
+  <input class="btn btn-success" type="button" value="Add Players" onclick="location.href='{% url 'API to add players' %}'" />
+</div>
+
+
+</body>
+</html>

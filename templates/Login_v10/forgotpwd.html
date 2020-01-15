@@ -1,0 +1,10 @@
+<div id="login-box">
+  <div class="left">
+    <h1>Forgot Password</h1>
+    <form  name="frgtpwd" method="post">
+      {% csrf_token %}
+    <input type="text" name="email" placeholder="email" id="email" />
+    <input type="submit" name="pwd" id = "pwd" value="click me" onclick="location.href='{% url 'forgotpassword' %}'"/>
+  </form>
+</div>
+</div>

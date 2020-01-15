@@ -1,0 +1,109 @@
+{% for player in player %}
+<form name="htmlform" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+<table width="450px">
+</tr>
+<tr>
+ <td valign="top">
+  <label for="first_name">First Name</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="first_name" maxlength="50" size="30" id="first_name" value="{{player.first_name}}">
+ </td>
+</tr>
+ 
+<tr>
+ <td valign="top">
+  <label for="last_name">Last Name</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="last_name" maxlength="50" size="30" id="last_name" value="{{player.last_name}}">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="age">Age</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="age" maxlength="80" size="30" id="age" value="{{player.age}}">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="email">Email Address *</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="email" maxlength="80" size="30" value="{{player.email}}">
+ </td>
+ 
+</tr>
+<tr>
+ <td valign="top">
+  <label for="telephone">Telephone Number</label>
+ </td>
+ <td valign="top">
+  <input  type="text" name="phone" maxlength="30" size="30" value="{{player.phone}}">
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+  <label for="comments">Comments *</label>
+ </td>
+ <td valign="top">
+  <textarea  name="comments" maxlength="1000" cols="25" rows="6"></textarea>
+ </td>
+</tr>
+<tr>
+ <td valign="top">
+ </td>
+ <td valign="top">
+  <input type="submit" name="signup_submit" id = "update_players" value="Submit" />
+ </td>
+</tr>
+
+</table>
+</form>
+{% endfor %}
+<script>
+  $(document).ready(function() {
+
+    $('#update_players').click(function () {
+
+      var first_name = $('#first_name').val();
+      var last_name = $('#last_name').val();
+      var age = $('#age').val();
+      var email = $('#email').val();
+      var phone = $('#phone').val();
+
+      $.ajax({
+        type:"POST",
+        url:"/players/details/{{player.id}}",
+        headers: {
+          'X-CSRFToken': '{{csrf_token}}'
+        },
+        data:{
+          last_name:name,
+          last_name:email,
+          age:password,
+          email:email,
+          phone:phone
+        },
+         success: function (response) {
+          // data = JSON.parse(register)
+          // data = JSON.parse(data.register)
+          // console.log(JSON.parse(data))
+          // console.log(data[0]['fields']['username'])
+            if(response.success=='true')
+              alert("Successful");
+            else
+              alert("Already exist")
+
+
+        //   $('#add').val('data sent sent');
+        //   $('#msg').html(html);
+         }
+      });
+      return false;
+    });
+  });
+</script>

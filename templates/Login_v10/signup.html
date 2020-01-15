@@ -1,0 +1,56 @@
+{% load static%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div id="login-box">
+  <div class="left">
+    <h1>Sign up</h1>
+    <form  name="exform">
+      {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" id="username" />
+    <input type="text" name="email" placeholder="E-mail" id="email"/>
+    <input type="password" name="password" placeholder="Password" id="password"/>
+    
+    <input type="submit" name="signup_submit" id = "signup" value="Sign me up" />
+    <input class="btn btn-success" type="button" value="Login" onclick="location.href='/users/'" />
+  </form>
+  <script>
+  $(document).ready(function() {
+
+    $('#signup').click(function () {
+
+      var name = $('#username').val();
+
+      var email = $('#email').val();
+
+      var password = $('#password').val();
+      $.ajax({
+        type:"POST",
+        url:"/userregister/",
+        headers: {
+          'X-CSRFToken': '{{csrf_token}}'
+        },
+        data:{
+          name:name,
+          email:email,
+          password:password
+        },
+         success: function (response) {
+          // data = JSON.parse(register)
+          // data = JSON.parse(data.register)
+          // console.log(JSON.parse(data))
+          // console.log(data[0]['fields']['username'])
+            if(response.success=='true')
+              alert("Successful");
+            else
+              alert("Already exist")
+
+
+        //   $('#add').val('data sent sent');
+        //   $('#msg').html(html);
+         }
+      });
+      return false;
+    });
+  });
+</script>
+  </div>
+</div>
